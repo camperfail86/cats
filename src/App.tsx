@@ -1,25 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useEffect, useState} from 'react';
+import Header from "./components/header/header";
+import './index.css'
+import {Route, Routes} from "react-router-dom";
+import {Cats} from "./components/cats/cats";
+import {catsApi} from "./api/api";
+import {useDispatch} from "react-redux";
+
+export type CatsType = {
+    breads: any
+    height: number
+    id: string
+    url: string
+    width: number
+}
+
+const initialValue = {
+    breads: [],
+    height: 500,
+    id: '12',
+    url: 'sd',
+    width: 400,
+}
 
 function App() {
+    const [cats, setCats] = useState([initialValue])
+    // const dispatch = useDispatch()
+    useEffect(() => {
+        // dispatch(catsApi.getCats())
+        catsApi.getCats().then((res: any)=> {
+            setCats(res.data)
+        })
+    }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <>
+          <Header/>
+          <Routes>
+              <Route path={'/'} element={<Cats cats={cats}/>}/>
+              <Route path={'/like-cats'} element={<div>2</div>}/>
+          </Routes>
+      </>
   );
 }
 

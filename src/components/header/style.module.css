@@ -1,0 +1,13 @@
+.header {
+    padding: 0 62px;
+    margin: 0;
+    background-color: #2196F3;
+    height: 64px;
+    justify-content: center;
+    display: flex;
+}
+
+.wrapper {
+    display: flex;
+    width: 1316px;
+}

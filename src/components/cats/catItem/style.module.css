@@ -1,0 +1,28 @@
+.catItem {
+    width: 225px;
+    height: 225px;
+    position: relative;
+}
+
+.catItem:hover {
+    transform: scale(1.13);
+    transition: transform .3s;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #FFF 58.85%);
+    box-shadow: 0 9px 18px 0 rgba(0, 0, 0, 0.18), 0 6px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.catImg {
+}
+
+.button {
+    all: unset;
+    right: 15px;
+    bottom: 20px;
+    position: absolute;
+    cursor: pointer;
+}
+
+.catIcon {
+    display: flex;
+    align-items: flex-end;
+}
