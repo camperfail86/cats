@@ -11,6 +11,6 @@ export const instance = axios.create(
 
 export const catsApi= {
     getCats() {
-        return instance.get(`/images/search?limit=7`)
+        return instance.get(`/images/search?limit=20`)
     },
 }

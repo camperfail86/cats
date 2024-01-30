@@ -4,7 +4,8 @@ import './index.css'
 import {Route, Routes} from "react-router-dom";
 import {Cats} from "./components/cats/cats";
 import {catsApi} from "./api/api";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {RootStateType} from "./store/store";
 
 export type CatsType = {
     breads: any
@@ -24,6 +25,8 @@ const initialValue = {
 
 function App() {
     const [cats, setCats] = useState([initialValue])
+    const catsLikes = useSelector((state: RootStateType) => state.likeCats)
+
     // const dispatch = useDispatch()
     useEffect(() => {
         // dispatch(catsApi.getCats())
@@ -36,8 +39,8 @@ function App() {
       <>
           <Header/>
           <Routes>
-              <Route path={'/'} element={<Cats cats={cats}/>}/>
-              <Route path={'/like-cats'} element={<div>2</div>}/>
+              <Route path={'/'} element={<Cats mainPage={true} cats={cats}/>}/>
+              <Route path={'/like-cats'} element={<Cats cats={catsLikes}/>}/>
           </Routes>
       </>
   );
