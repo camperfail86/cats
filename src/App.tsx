@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import Header from "./components/header/header";
 import './index.css'
 import {Route, Routes} from "react-router-dom";
@@ -6,6 +6,7 @@ import {Cats} from "./components/cats/cats";
 import {catsApi} from "./api/api";
 import {useDispatch, useSelector} from "react-redux";
 import {RootStateType} from "./store/store";
+import {setCats} from "./reducers/catsReducer";
 
 export type CatsType = {
     breads: any
@@ -24,14 +25,13 @@ const initialValue = {
 }
 
 function App() {
-    const [cats, setCats] = useState([initialValue])
+    const cats = useSelector((state: RootStateType)=>state.cats)
     const catsLikes = useSelector((state: RootStateType) => state.likeCats)
+    const dispatch = useDispatch()
 
-    // const dispatch = useDispatch()
     useEffect(() => {
-        // dispatch(catsApi.getCats())
         catsApi.getCats().then((res: any)=> {
-            setCats(res.data)
+            dispatch(setCats(res.data))
         })
     }, []);
 

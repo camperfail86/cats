@@ -8,7 +8,6 @@ import {RootStateType} from "../../store/store";
 type Props = {
     cats: CatsType[]
     mainPage?: boolean
-    // likes?: boolean
 }
 
 export const Cats = ({cats, mainPage = false}: Props) => {

@@ -3,7 +3,7 @@ import {catsReducer} from "../reducers/catsReducer";
 import {likeCatsReducer} from "../reducers/likeCatsReducer";
 
 export const rootReducer = combineReducers({
-    // cats: catsReducer,
+    cats: catsReducer,
     likeCats: likeCatsReducer
 });
 let preloadedState;

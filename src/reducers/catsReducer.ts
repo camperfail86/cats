@@ -1,19 +1,19 @@
-type initialState = any
+const initialState = [] as any
 
-export const catsReducer = (state: initialState, action: any) => {
+export const catsReducer = (state = initialState, action: SetCatsType) => {
     switch (action.type) {
-        case "APP/SET-INITIALIZED": {
-            return {...state, initialized: action.payload.initialized}
+        case "SET-CATS": {
+            return action.payload.data
         }
         default:
             return state
     }
 }
 
-export type SetErrorType = ReturnType<typeof setErrorAC>
-export const setErrorAC = (error: string | null) => {
+export type SetCatsType = ReturnType<typeof setCats>
+export const setCats = (data: any) => {
     return {
-        type: 'APP/SET-ERROR',
-        payload: {error}
+        type: 'SET-CATS',
+        payload: {data}
     } as const
 }
